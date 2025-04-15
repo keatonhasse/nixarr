@@ -7,8 +7,8 @@
 with lib; let
   cfg = config.nixarr.tautulli;
   nixarr = config.nixarr;
-  #user = "tautulli";
-  #group = "tautulli";
+  user = "tautulli";
+  group = "tautulli";
 in {
   options.nixarr.tautulli = {
     enable = mkEnableOption "Tautulli";
@@ -21,12 +21,13 @@ in {
         group = "tautilli";
       };
     };
-
+  };
+  config = mkIf (nixarr.enable && config.enable) {
     services.tautulli = {
       enable = cfg.enable;
       package = cfg.package;
-      user = "tautulli";
-      group = "tautulli";
+      user = user;
+      group = group;
     };
   };
 }
