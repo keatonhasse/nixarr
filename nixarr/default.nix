@@ -106,6 +106,7 @@ in {
     ./prowlarr
     ./transmission
     ./sabnzbd
+    ./tautulli
     ./recyclarr
     ../util
   ];
