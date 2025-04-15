@@ -22,7 +22,7 @@ in {
 
     user = mkOption {
       type = types.str;
-      default = tautulli;
+      default = "tautulli";
       description = "";
     };
 
