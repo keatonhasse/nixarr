@@ -22,7 +22,8 @@ in {
       };
     };
   };
-  config = mkIf (nixarr.enable && config.enable) {
+
+  config = mkIf (nixarr.enable && cfg.enable) {
     services.tautulli = {
       enable = cfg.enable;
       package = cfg.package;
