@@ -38,7 +38,7 @@ in {
       enable = cfg.enable;
       package = cfg.package;
       user = cfg.user;
-      group = cfg.roup;
+      group = cfg.group;
     };
   };
 }
