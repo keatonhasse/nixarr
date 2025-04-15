@@ -37,8 +37,8 @@ in {
     services.tautulli = {
       enable = cfg.enable;
       package = cfg.package;
-      user = cfg.user;
-      group = cfg.group;
+      user = "tautulli";
+      group = "tautulli";
     };
   };
 }
