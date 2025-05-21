@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib; let
@@ -10,30 +11,30 @@ with lib; let
 in {
   options.nixarr.tautulli = {
     enable = mkEnableOption "Tautulli";
-    package = mkPackageOption pkgs "tautulli" { };
+    package = mkPackageOption pkgs "tautulli" {};
 
+    # user = mkOption {
+    #   type = types.str;
+    #   default = "tautulli";
+    #   description = "";
+    # };
+
+    # group = mkOption {
+    #   type = types.str;
+    #   default = "tautulli";
+    #   description = "";
+    # };
+  };
+
+  config = mkIf (nixarr.enable && cfg.enable) {
     users = {
-      groups.tautilli = { };
+      groups.tautilli = {};
       users.tautilli = {
         isSystemUser = true;
         group = "tautilli";
       };
     };
 
-    user = mkOption {
-      type = types.str;
-      default = "tautulli";
-      description = "";
-    };
-
-    group = mkOption {
-      type = types.str;
-      default = "tautulli";
-      description = "";
-    };
-  };
-
-  config = mkIf (nixarr.enable && cfg.enable) {
     services.tautulli = {
       enable = cfg.enable;
       package = cfg.package;
