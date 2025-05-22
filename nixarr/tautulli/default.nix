@@ -13,6 +13,14 @@ in {
     enable = mkEnableOption "Tautulli";
     package = mkPackageOption pkgs "tautulli" {};
 
+    stateDir = mkOption {
+      type = types.path;
+      default = "${nixarr.stateDir}/tautulli";
+      defaultText = literalExpression ''"''${nixarr.stateDir}/tautulli"'';
+      example = "/nixarr/.state/tautulli";
+      description = "The location of the state directory for the Tautulli service.";
+    };
+
     # user = mkOption {
     #   type = types.str;
     #   default = "tautulli";
@@ -40,6 +48,7 @@ in {
       package = cfg.package;
       user = "tautilli";
       group = "tautilli";
+      dataDir = cfg.stateDir;
     };
   };
 }
