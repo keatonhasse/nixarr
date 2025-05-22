@@ -27,19 +27,19 @@ in {
   };
 
   config = mkIf (nixarr.enable && cfg.enable) {
-    # users = {
-    #   groups.tautilli = {};
-    #   users.tautilli = {
-    #     isSystemUser = true;
-    #     group = "tautilli";
-    #   };
-    # };
+    users = {
+      groups.tautilli = {};
+      users.tautilli = {
+        isSystemUser = true;
+        group = "tautilli";
+      };
+    };
 
     services.tautulli = {
       enable = true;
       package = cfg.package;
-      # user = "plexpy";
-      # group = "plexpy";
+      user = "tautilli";
+      group = "tautilli";
     };
   };
 }
