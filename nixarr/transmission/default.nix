@@ -356,7 +356,10 @@ in {
     services.transmission = {
       enable = true;
       user = globals.transmission.user;
-      group = globals.transmission.group;
+      group =
+        if cfg-cross-seed.enable
+        then globals.cross-seed.group
+        else globals.transmission.group;
       home = cfg.stateDir;
       webHome =
         if cfg.flood.enable
