@@ -291,7 +291,7 @@ in {
       groups.${globals.cross-seed.group}.gid = globals.gids.${globals.cross-seed.group};
       users.${globals.transmission.user} = {
         isSystemUser = true;
-        group = globals.transmission.group;
+        group = lib.mkForce globals.transmission.group;
         uid = globals.uids.${globals.transmission.user};
       };
     };
