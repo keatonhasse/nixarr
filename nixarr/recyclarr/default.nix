@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  utils,
   ...
 }:
 with lib; let
@@ -213,6 +214,7 @@ in {
     systemd.services.recyclarr = {
       requires = ["recyclarr-setup.service"];
       after = ["recyclarr-setup.service"];
+      preStart = utils.genJqSecretsReplacementSnippet cfg.configuration configPath;
       serviceConfig = {
         ExecStart = lib.mkForce "${cfg.package}/bin/recyclarr sync --app-data ${cfg.stateDir} --config ${effectiveConfigFile}";
         EnvironmentFile = "${cfg.stateDir}/env";
